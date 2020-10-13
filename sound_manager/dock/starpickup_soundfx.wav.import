@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/starpickup_soundfx.wav-0780b79944ac5b1326928daaacd0c72d.sample"
+
+[deps]
+
+source_file="res://sound_manager/dock/starpickup_soundfx.wav"
+dest_files=[ "res://.import/starpickup_soundfx.wav-0780b79944ac5b1326928daaacd0c72d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Star.gd" type="Script" id=1]
+[ext_resource path="res://PNG/starBronze.png" type="Texture" id=2]
+[ext_resource path="res://PNG/starGold.png" type="Texture" id=3]
+[ext_resource path="res://PNG/starSilver.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "stars",
+"speed": 5.0
+} ]
+
+[node name="Star" type="Area2D"]
+z_index = 2
+script = ExtResource( 1 )
+
+[node name="sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "stars"
+
+[node name="poly" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -16.8485, -3.59488, -7.11827, -8.60169, -0.127628, -16.9149, 7.71323, -8.79063, 18.1992, -5.0119, 12.0588, 4.71832, 11.3975, 15.96, 0.155773, 13.126, -9.76338, 15.4877, -11.8417, 4.05704 )
+[connection signal="body_entered" from="." to="." method="_on_Star_body_entered"]

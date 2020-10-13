@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/GroundGrass.gd" type="Script" id=1]
+[ext_resource path="res://PNG/groundSnow.png" type="Texture" id=2]
+[ext_resource path="res://PNG/groundRock.png" type="Texture" id=3]
+[ext_resource path="res://PNG/groundIce.png" type="Texture" id=4]
+[ext_resource path="res://PNG/groundGrass.png" type="Texture" id=5]
+[ext_resource path="res://PNG/groundDirt.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Snow",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Rock",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "Ice",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "Grass",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "Dirt",
+"speed": 5.0
+} ]
+
+[node name="Ground" type="StaticBody2D"]
+position = Vector2( 407.268, 563.48 )
+script = ExtResource( 1 )
+
+[node name="poly" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -404.749, 33.6543, -404.749, 0.251099, -371.976, -2.2699, -364.413, 6.55359, -313.362, 14.1166, -269.875, 1.5116, -244.035, -21.8076, -158.321, -26.2193, -94.6662, -2.90015, -53.7, -1.63965, -25.3389, -17.3959, 30.123, -15.5051, 64.1565, 17.2678, 100.711, 14.1166, 132.223, 25.461, 166.257, 25.461, 195.878, 2.14185, 233.063, -4.16064, 253.367, -23.3688, 333.367, -29.6846, 357.577, -5.47406, 402.84, 2.94696, 401.788, 32.4206 )
+
+[node name="sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Snow"
+
+[node name="detect" type="Area2D" parent="."]
+
+[node name="poly" type="CollisionPolygon2D" parent="detect"]
+polygon = PoolVector2Array( -405.756, 34.6217, -404.041, 1.1842, -372.319, -0.530579, -363.745, 3.75629, -316.589, 13.1874, -272.006, 2.0415, -243.712, -24.537, -159.69, -28.8239, -99.6737, -5.6748, -50.8034, -3.10266, -25.0822, -20.2501, 28.0749, -20.2501, 61.5125, 11.4727, 102.666, 13.1874, 131.817, 20.9038, 166.112, 21.7611, 196.12, -5.6748, 230.415, -8.24695, 256.994, -30.5386, 338.444, -33.1108, 359.878, -6.53223, 401.89, 2.0415, 401.89, 36.3365 )
+[connection signal="body_entered" from="detect" to="." method="_on_detect_body_entered"]
